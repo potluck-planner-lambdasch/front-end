@@ -2,13 +2,8 @@ import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import schema from "./validation/formSchema";
 import { reach } from "yup";
-import styled from "styled-components";
 
-// const StyledDiv = styled.div`
-//     display: flex;
-//     margin:auto;
-//     flex-direction: column;
-// `
+
 
 export default function Login() {
   const initialFormValues = { username: "", password: "" };
@@ -35,7 +30,6 @@ export default function Login() {
     <Route path="/login">
       <div class="login">
         <form>
-          {/* <StyledDiv> */}
             <label>
               Username
               <input
@@ -47,7 +41,6 @@ export default function Login() {
               />
             </label>
             <div class="errors">{formErrors.username}</div>
-          {/* </StyledDiv> */}
           <label>
             Password
             <input
