@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import schema from "./validation/formSchema";
 import { reach } from "yup";
@@ -25,6 +25,10 @@ export default function Login() {
     validate(name, value);
     setValues({ ...values, [name]: value });
   };
+
+  useEffect(() => {
+    schema.isValid(values).then(valid => setDisable(!valid))
+  }, [values])
 
   return (
     <Route path="/login">
