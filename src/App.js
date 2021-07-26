@@ -1,34 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import { Link, Route } from 'react-router-dom'
+import Login from './Login'
+import { Link } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
 
-        <Link to='/login'>Log in</Link>
 
-        <Route path='/login'>
-        <div class='login'>
-          <form>
-            <label>Username
-              <input
-                type='text'
-                name='username'
-                id='username'
-              />
-            </label>
-            <label>Password
-              <input
-                type='password'
-                name='password'
-                id='password'
-              />
-            </label>
-          </form>
-        </div>
-        </Route>
+        <Link to='/login'>Log in</Link>
+        <Login/>
       
         <img src={logo} className="App-logo" alt="logo" />
         <p>
