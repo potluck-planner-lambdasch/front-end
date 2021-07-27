@@ -74,7 +74,7 @@ export default function Login() {
   };
 
   return (
-    <Route path="/login">
+    <Route exact path="/">
         <LoginBox>
             <form style={{display:'flex',justifyContent:'space-around', width:'95%'}}onSubmit={onSubmit}>
                 <FormFieldBox>

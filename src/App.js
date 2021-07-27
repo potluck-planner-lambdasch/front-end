@@ -1,9 +1,12 @@
 import "./App.css";
 import Login from "./Login";
-import { Link } from "react-router-dom";
+import CreatePotluck from './CreatePotluck'
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const NavStyled = styled.nav`
+  width:50vw;
+
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -11,6 +14,7 @@ const NavStyled = styled.nav`
 `;
 const HeaderStyled = styled.header`
   display: flex;
+  justify-content:space-around;
   height: 8vw;
   align-items:center;
   border-radius:20px;
@@ -33,12 +37,13 @@ function App() {
           <H2Styled>Potluck Planner</H2Styled>
         </div>
         <NavStyled>
-          <Link style={{textDecoration: 'none', fontSize:'2.5vw', color:'white'}} to="/">Home</Link>
-          <Link style={{textDecoration: 'none', fontSize:'2.5vw', color:'white'}} to="/login">Log in</Link>
+          <NavLink style={{textDecoration: 'none', fontSize:'2.5vw', color:'white'}} to="/">Home</NavLink>
+          <NavLink style={{textDecoration: 'none', fontSize:'2.5vw', color:'white'}} to="/CreatePotluck">CreatePotluck</NavLink>
         </NavStyled>
       </HeaderStyled>
       </div>
       <Login />
+      <CreatePotluck/>
     </div>
     
     </>
