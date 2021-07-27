@@ -1,4 +1,16 @@
+import { useState } from 'react';
+
+
+
+
 const signUpPage = () => {
+  
+  const [text, set] = useState('')
+  const [text, setText] = useState('')
+  const [text, setText] = useState('')
+  const [text, setText] = useState('')
+  const [text, setText] = useState('')
+  
     return (
         <form className='signUp'>
             <h1>Will you be joining us? Sign in here.</h1>
