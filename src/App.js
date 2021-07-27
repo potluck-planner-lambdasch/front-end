@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './Login'
 import { Link } from 'react-router-dom'
+import signUpPage from './signUpPage'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Link to='/login'>Log in</Link>
         <Login/>
       
+      <signUpPage />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload unit 4 build week.
