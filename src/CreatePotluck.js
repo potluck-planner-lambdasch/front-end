@@ -20,7 +20,7 @@ export default function CreatePotluck() {
     return(
         <Route path='/CreatePotluck'>
         <CreatePotluckBox>
-
+            
         </CreatePotluckBox>
         </Route>
     )
