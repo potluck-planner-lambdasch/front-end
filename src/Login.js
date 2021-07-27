@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import schema from "./validation/formSchema";
 import { reach } from "yup";
+import axios from 'axios'
 
-
+const baseURL = 'https://jaden-build-week-4.herokuapp.com/api'
 
 export default function Login() {
   const initialFormValues = { username: "", password: "" };
@@ -30,10 +31,23 @@ export default function Login() {
     schema.isValid(values).then(valid => setDisable(!valid))
   }, [values])
 
+  const onSubmit = (e) => {
+      e.preventDefault()
+      const newUser = {username:values.username, password:values.password}
+      axios.post(`${baseURL}/auth/login`,newUser)
+        .then(res => console.log(res.data))
+        .catch(err => {
+            console.log(err)
+        })
+        .finally(() => {
+            console.log('done')
+        })
+  }
+
   return (
     <Route path="/login">
       <div class="login">
-        <form>
+        <form onSubmit={onSubmit}>
             <label>
               Username
               <input
