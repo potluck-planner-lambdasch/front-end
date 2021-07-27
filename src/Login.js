@@ -16,18 +16,19 @@ const LoginBox = styled.div`
   margin: 1%;
   display:flex;
   align-items:center;
+  justify-content:center;
   border-radius:20px;
   border: 3px solid black;
 
-`;
+`
 
 const ErrorDiv = styled.div`
   display:block;
-  height:40px;
-  width:
-  font-size:1rem;
+  height:5vw;
+  font-size:2vw;
   color:red;
 `
+
 const FormFieldBox = styled.div`
     width:40%;
 `
@@ -75,12 +76,12 @@ export default function Login() {
   return (
     <Route path="/login">
         <LoginBox>
-            <form style={{display:'flex',justifyContent:'space-around'}}onSubmit={onSubmit}>
+            <form style={{display:'flex',justifyContent:'space-around', width:'95%'}}onSubmit={onSubmit}>
                 <FormFieldBox>
-                <label>
+                <label style={{fontSize:'2.5vw'}}>
                     Username
                     <input
-                    style={{width:'15%'}}
+                    
                     type="text"
                     name="username"
                     value={values.username}
@@ -91,7 +92,7 @@ export default function Login() {
                 <ErrorDiv class="errors">{formErrors.username}</ErrorDiv>
                 </FormFieldBox>
                 <FormFieldBox>
-                <label>Password
+                <label style={{fontSize:'2.5vw'}}>Password
                     <input
                     type="password"
                     name="password"
