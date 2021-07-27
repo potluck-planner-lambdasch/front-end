@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
-import schema from "./validation/formSchema";
+import schema from "./validation/loginSchema";
 import { reach } from "yup";
 import axios from "axios";
 import styled from "styled-components";
@@ -57,9 +57,9 @@ export default function Login() {
   useEffect(() => {
     schema.isValid(values).then((valid) => setDisable(!valid));
   }, [values]);
-
-  const onSubmit = (e) => {
-    e.preventDefault();
+  
+  const onSubmit = (evt) => {
+    evt.preventDefault();
     const newUser = { username: values.username, password: values.password };
     axios
       .post(`${baseURL}/auth/login`, newUser)
@@ -89,7 +89,7 @@ export default function Login() {
                     onChange={onChange}
                     />
                 </label>
-                <ErrorDiv class="errors">{formErrors.username}</ErrorDiv>
+                <ErrorDiv className="errors">{formErrors.username}</ErrorDiv>
                 </FormFieldBox>
                 <FormFieldBox>
                 <label style={{fontSize:'2.5vw'}}>Password
@@ -101,7 +101,7 @@ export default function Login() {
                     onChange={onChange}
                     />
                 </label>
-                <ErrorDiv class="errors">{formErrors.password}</ErrorDiv>
+                <ErrorDiv className="errors">{formErrors.password}</ErrorDiv>
                 </FormFieldBox>
                 <button disabled={disable}>Login</button>
             </form>
