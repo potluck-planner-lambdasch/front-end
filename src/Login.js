@@ -2,9 +2,35 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import schema from "./validation/formSchema";
 import { reach } from "yup";
-import axios from 'axios'
+import axios from "axios";
+import styled from "styled-components";
 
-const baseURL = 'https://jaden-build-week-4.herokuapp.com/api'
+const baseURL = "https://jaden-build-week-4.herokuapp.com/api";
+
+const LoginBox = styled.div`
+  background-color: lightsteelblue;
+  color: white;
+  width:98%;
+  height: 25vw;
+  padding:0 0 5% 0;
+  margin: 1%;
+  display:flex;
+  align-items:center;
+  border-radius:20px;
+  border: 3px solid black;
+
+`;
+
+const ErrorDiv = styled.div`
+  display:block;
+  height:40px;
+  width:
+  font-size:1rem;
+  color:red;
+`
+const FormFieldBox = styled.div`
+    width:40%;
+`
 
 export default function Login() {
   const initialFormValues = { username: "", password: "" };
@@ -18,7 +44,7 @@ export default function Login() {
     reach(schema, name)
       .validate(value)
       .then(() => setFormErrors({ ...formErrors, [name]: "" }))
-      .catch((err) => setFormErrors({...formErrors, [name]: err.errors[0]}));
+      .catch((err) => setFormErrors({ ...formErrors, [name]: err.errors[0] }));
   };
 
   const onChange = (evt) => {
@@ -28,52 +54,58 @@ export default function Login() {
   };
 
   useEffect(() => {
-    schema.isValid(values).then(valid => setDisable(!valid))
-  }, [values])
+    schema.isValid(values).then((valid) => setDisable(!valid));
+  }, [values]);
 
   const onSubmit = (e) => {
-      e.preventDefault()
-      const newUser = {username:values.username, password:values.password}
-      axios.post(`${baseURL}/auth/login`,newUser)
-        .then(res => console.log(res.data))
-        .catch(err => {
-            console.log(err)
-        })
-        .finally(() => {
-            console.log('done')
-        })
-  }
+    e.preventDefault();
+    const newUser = { username: values.username, password: values.password };
+    axios
+      .post(`${baseURL}/auth/login`, newUser)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        console.log("done");
+        setValues(initialFormValues)
+      });
+  };
 
   return (
     <Route path="/login">
-      <div class="login">
-        <form onSubmit={onSubmit}>
-            <label>
-              Username
-              <input
-                type="text"
-                name="username"
-                value={values.username}
-                id="username"
-                onChange={onChange}
-              />
-            </label>
-            <div class="errors">{formErrors.username}</div>
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={values.password}
-              id="password"
-              onChange={onChange}
-            />
-          </label>
-          <div class="errors">{formErrors.password}</div>
-          <button disabled={disable}>Login</button>
-          
-        </form>
-      </div>
+        <LoginBox>
+            <form style={{display:'flex',justifyContent:'space-around'}}onSubmit={onSubmit}>
+                <FormFieldBox>
+                <label>
+                    Username
+                    <input
+                    style={{width:'15%'}}
+                    type="text"
+                    name="username"
+                    value={values.username}
+                    id="username"
+                    onChange={onChange}
+                    />
+                </label>
+                <ErrorDiv class="errors">{formErrors.username}</ErrorDiv>
+                </FormFieldBox>
+                <FormFieldBox>
+                <label>Password
+                    <input
+                    type="password"
+                    name="password"
+                    value={values.password}
+                    id="password"
+                    onChange={onChange}
+                    />
+                </label>
+                <ErrorDiv class="errors">{formErrors.password}</ErrorDiv>
+                </FormFieldBox>
+                <button disabled={disable}>Login</button>
+            </form>
+            
+        </LoginBox>
     </Route>
   );
 }
