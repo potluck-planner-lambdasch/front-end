@@ -12,6 +12,7 @@ const PotluckPage = (props) => {
             console.log(res);
             setPotlucks(res.data)
         })
+        .catch(err => {console.log(err)})
     },[])
 
     return(
