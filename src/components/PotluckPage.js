@@ -17,12 +17,11 @@ const PotluckPage = (props) => {
     return(
         <div>
             <h3>Upcoming Potlucks</h3>
-            {potlucks.map(potluck => {
+            {potlucks.map(potluck => (
                 <p key={potluck.id}>{potluck.name}</p>
-            })}
+            ))}
         </div>
     )
 }
-
 
 export default PotluckPage;
