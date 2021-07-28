@@ -5,7 +5,6 @@ import { reach } from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
-const baseURL = "https://jaden-build-week-4.herokuapp.com/api";
 
 const LoginBox = styled.div`
   background-color: lightsteelblue;
@@ -33,7 +32,8 @@ const FormFieldBox = styled.div`
     width:40%;
 `
 
-export default function Login() {
+export default function Login(props) {
+  const { baseURL } = props
   const initialFormValues = { username: "", password: "" };
   const initialFormErrors = { username: "", password: "" };
 

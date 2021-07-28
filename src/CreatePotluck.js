@@ -29,20 +29,18 @@ const ErrorDiv = styled.div`
   font-size:2vw;
   color:red;
 `
-const baseURL = "https://jaden-build-week-4.herokuapp.com/api";
 
 const initialFormValues = {
-    date:'',
-    time:'',
+    dateTime:'',
     location:''
 }
 const initialFormErrors = {
-    date:'',
-    time:'',
+    dateTime:'',
     location:''
 }
 
-export default function CreatePotluck() {
+export default function CreatePotluck(props) {
+    const { baseURL } = props
     const [values, setValues] = useState(initialFormValues)
     const [disable, setDisable] = useState(true);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -69,6 +67,7 @@ export default function CreatePotluck() {
         const newPotluck = {
           dateTime: values.dateTime,
           location: values.location
+          
         }
         axios.post(`${baseURL}/potluck`,newPotluck)
         .then((res) => console.log(res.data))
