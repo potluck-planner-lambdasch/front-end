@@ -24,5 +24,4 @@ const PotluckPage = (props) => {
     )
 }
 
-
 export default PotluckPage;
