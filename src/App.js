@@ -5,6 +5,8 @@ import CreatePotluck from './CreatePotluck'
 import { NavLink} from "react-router-dom";
 import styled from "styled-components";
 
+import PrivateRoute from './components/PrivateRoute';
+import PotluckPage from './components/PotluckPage';
 
 
 const baseURL = "https://jaden-build-week-4.herokuapp.com/api";
@@ -56,6 +58,7 @@ function App() {
       <Login baseURL={baseURL}/>
       <CreatePotluck baseURL={baseURL}/>
       {/* <Potlucks baseURL={baseURL}/> */}
+      <PrivateRoute path='/potluck' component={PotluckPage} />
     </div>
     
     </>
