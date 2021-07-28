@@ -2,14 +2,16 @@ import "./App.css";
 import Login from "./Login";
 import CreatePotluck from './CreatePotluck'
 import Potlucks from './Potlucks'
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import styled from "styled-components";
+
+
 
 const baseURL = "https://jaden-build-week-4.herokuapp.com/api";
 
+
 const NavStyled = styled.nav`
   width:50vw;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -53,7 +55,7 @@ function App() {
       </div>
       <Login baseURL={baseURL}/>
       <CreatePotluck baseURL={baseURL}/>
-      <Potlucks baseURL={baseURL}/>
+      {/* <Potlucks baseURL={baseURL}/> */}
     </div>
     
     </>

@@ -4,6 +4,10 @@ import schema from "./validation/loginSchema";
 import { reach } from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import { useHistory } from 'react-router';
+
+
+
 
 
 const LoginBox = styled.div`
@@ -31,27 +35,43 @@ const ErrorDiv = styled.div`
 const FormFieldBox = styled.div`
     width:40%;
 `
-
 export default function Login(props) {
   const { baseURL } = props
-  const initialFormValues = { username: "", password: "" };
-  const initialFormErrors = { username: "", password: "" };
+  const initialFormValues = {
+    username: "",
+    password: ""
+  };
+  const initialFormErrors = {
+    username: "",
+    password: ""
+  };
 
   const [values, setValues] = useState(initialFormValues);
   const [disable, setDisable] = useState(true);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
+  const { push } = useHistory();
+
   const validate = (name, value) => {
     reach(schema, name)
       .validate(value)
-      .then(() => setFormErrors({ ...formErrors, [name]: "" }))
-      .catch((err) => setFormErrors({ ...formErrors, [name]: err.errors[0] }));
+      .then(() => setFormErrors({
+        ...formErrors,
+        [name]: ""
+      }))
+      .catch((err) => setFormErrors({
+        ...formErrors,
+        [name]: err.errors[0]
+      }));
   };
 
   const onChange = (evt) => {
     const { name, value } = evt.target;
     validate(name, value);
-    setValues({ ...values, [name]: value });
+    setValues({
+      ...values,
+      [name]: value
+    });
   };
 
   useEffect(() => {
@@ -60,10 +80,14 @@ export default function Login(props) {
   
   const onSubmit = (evt) => {
     evt.preventDefault();
-    const newUser = { username: values.username, password: values.password };
+    const newUser = {username: values.username, password: values.password };
     axios
       .post(`${baseURL}/auth/login`, newUser)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+        window.localStorage.setItem('token', res.data.token)
+        push('/potluck')
+      })
       .catch((err) => {
         console.log(err);
       })
@@ -73,6 +97,7 @@ export default function Login(props) {
       });
   };
 
+
   return (
     <Route exact path="/">
         <LoginBox>
@@ -81,7 +106,6 @@ export default function Login(props) {
                 <label style={{fontSize:'2.5vw'}}>
                     Username
                     <input
-                    
                     type="text"
                     name="username"
                     value={values.username}
