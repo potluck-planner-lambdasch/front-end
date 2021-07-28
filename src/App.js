@@ -1,7 +1,7 @@
 import "./App.css";
 import Login from "./Login";
 import CreatePotluck from './CreatePotluck'
-import Potlucks from './Potlucks'
+// import Potlucks from './Potlucks'
 import { NavLink} from "react-router-dom";
 import styled from "styled-components";
 
