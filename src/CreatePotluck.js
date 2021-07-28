@@ -64,13 +64,14 @@ export default function CreatePotluck() {
         schema.isValid(values).then((valid) => setDisable(!valid));
       }, [values]);
 
-      const onSubmit = () => {
+      const onSubmit = (evt) => {
+        evt.preventDefault()
         const newPotluck = {
           dateTime: values.dateTime,
           location: values.location
         }
         axios.post(`${baseURL}/potluck`,newPotluck)
-        .then((res) => console.log(res))
+        .then((res) => console.log(res.data))
         .catch((err) => {
           console.log(err);
         })
@@ -81,7 +82,7 @@ export default function CreatePotluck() {
       }
 
     return(
-        <Route path='/CreatePotluck'>
+        <Route path='/CreatePotluck/'>
         <CreatePotluckBox>
         <form onSubmit={onSubmit} style={{display:'flex', flexDirection:'column',alignItems:'center', width:'95%'}}>
                 <FormFieldBox>
