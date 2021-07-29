@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import schema from "./validation/createSchema";
 import { reach } from "yup";
 import axios from 'axios'
+import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const CreatePotluckBox = styled.div`
   background-color: lightsteelblue;
@@ -64,20 +65,26 @@ export default function CreatePotluck(props) {
 
       const onSubmit = (evt) => {
         evt.preventDefault()
-        const newPotluck = {
-          dateTime: values.dateTime,
-          location: values.location
+        axiosWithAuth()
+        .post('/potluck',values)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err=>{console.log(err)})
+        // const newPotluck = {
+        //   dateTime: values.dateTime,
+        //   location: values.location
           
-        }
-        axios.post(`${baseURL}/potluck`,newPotluck)
-        .then((res) => console.log(res.data))
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => {
-          console.log("done");
-          setValues(initialFormValues)
-        })
+        // }
+        // axios.post(`${baseURL}/potluck`,newPotluck)
+        // .then((res) => console.log(res.data))
+        // .catch((err) => {
+        //   console.log(err);
+        // })
+        // .finally(() => {
+        //   console.log("done");
+        //   setValues(initialFormValues)
+        // })
       }
 
     return(
