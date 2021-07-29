@@ -7,20 +7,20 @@ import PrivateRoute from './PrivateRoute';
 export default function HostedPotluck(props) {
     const { potluck } = props
 
-    const [inviteFriend, setInviteFriend] = useState({})
+    // const [inviteFriend, setInviteFriend] = useState({})
 
-    const onChange = (e) => {
-        const { name, value } = e.target
-        setInviteFriend({[name]: value})
-    }
-    const onSubmit = () => {
-        axiosWithAuth()
-        .post(`/potluck/${potluck.potluck_id}/guests`, inviteFriend)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {console.log(err)})
-    }
+    // const onChange = (e) => {
+    //     const { name, value } = e.target
+    //     setInviteFriend({[name]: value})
+    // }
+    // const onSubmit = () => {
+    //     axiosWithAuth()
+    //     .post(`/potluck/${potluck.potluck_id}/guests`, inviteFriend)
+    //     .then(res => {
+    //         console.log(res);
+    //     })
+    //     .catch(err => {console.log(err)})
+    // }
 
     return (
         

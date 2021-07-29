@@ -6,19 +6,41 @@ export default function SearchFriend(props) {
     const { potluck } = props
     const [friends, setFriends] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
+    const [filteredName, setFilteredName] = useState('')
 
-    const onChange = (e) => {
-        const { name, value, id } = e.target
-        setSearchTerm({[name]:value})
-        console.log(searchTerm)
-        console.log(potluck.potluck_id)
-    }
+    let friendsArray = []
     useEffect(() => {
         axiosWithAuth()
         .get('/users')
-        .then(res => console.log(res.data))
+        .then(res => {
+            console.log(res.data)
+            console.log(searchTerm)
+            friendsArray = [...res.data]
+            // console.log(filteredFriends)
+            // setFriends([filteredFriends])
+            console.log(friendsArray)
+            console.log('test')
+        })
         .catch(err => console.log (err))
-    }, [searchTerm])
+    }, [])
+
+
+    const onChange = (e) => {
+        const { name, value, id } = e.target
+        setSearchTerm(value)
+        console.log(searchTerm)
+        friendsArray.map((friend) => {
+            if(friend.username.includes(value, 0)){
+                console.log('made it here')
+                setFilteredName(friend.username)
+            }
+        })
+        console.log(filteredName)
+        // setSearchTerm(value)
+        
+        // console.log(searchTerm)
+        // console.log(potluck.potluck_id)
+    }
     
 
     return (
@@ -31,8 +53,8 @@ export default function SearchFriend(props) {
                 placeholder='search for friend'
                 name='searchFriend'
                 type='text'
-                value={searchTerm.searchFriend}
-                onChange={onChange}    
+                value={searchTerm}
+                onChange={onChange}
             />
             </label>
         </form>
