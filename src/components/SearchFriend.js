@@ -6,7 +6,7 @@ export default function SearchFriend(props) {
     const { potluck } = props
     const [friends, setFriends] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-    const [filteredName, setFilteredName] = useState('')
+
 
     let friendsArray = []
     useEffect(() => {
@@ -14,8 +14,7 @@ export default function SearchFriend(props) {
         .get('/users')
         .then(res => {
             console.log(res.data)
-            console.log(searchTerm)
-            friendsArray = [...res.data]
+            friendsArray = res.data
             // console.log(filteredFriends)
             // setFriends([filteredFriends])
             console.log(friendsArray)
@@ -24,23 +23,31 @@ export default function SearchFriend(props) {
         .catch(err => console.log (err))
     }, [])
 
-
+    
     const onChange = (e) => {
         const { name, value, id } = e.target
         setSearchTerm(value)
         console.log(searchTerm)
-        friendsArray.map((friend) => {
-            if(friend.username.includes(value, 0)){
-                console.log('made it here')
-                setFilteredName(friend.username)
-            }
+    }
+    
+    useEffect(() => {
+        console.log('useEffect filter runs')
+        const filteredFriends = friendsArray.filter(friend => {
+            friend.username.length()
+            // friend.username.includes(searchTerm, 0)
+            // setFriends(filteredFriends)
+            console.log(filteredFriends)
         })
-        console.log(filteredName)
+        
+        
+    },[onChange])
+    
+        
         // setSearchTerm(value)
         
         // console.log(searchTerm)
         // console.log(potluck.potluck_id)
-    }
+    
     
 
     return (
