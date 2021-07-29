@@ -19,8 +19,20 @@ const PotluckPage = (props) => {
         <div>
             <h3>Upcoming Potlucks</h3>
             {potlucks.map(potluck => (
-                <p key={potluck.id}>{potluck.name}</p>
+                <div key={potluck.potluck_id} >
+                    <p key={potluck.potluck_id}>Location: {potluck.location} Date/Time: {potluck.dateTime} </p>
+                    <form>
+                        <label>Invite:
+                            <input
+                            name='friend'
+                            type='text'
+                            
+                            />
+                        </label>
+                    </form> 
+                </div>
             ))}
+            
         </div>
     )
 }
