@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
 import schema from "./validation/createSchema";
@@ -46,6 +46,8 @@ export default function CreatePotluck(props) {
     const [disable, setDisable] = useState(true);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
 
+    const { push } = useHistory();
+
     const validate = (name, value) => {
         reach(schema, name)
           .validate(value)
@@ -69,6 +71,7 @@ export default function CreatePotluck(props) {
         .post('/potluck',values)
         .then(res => {
           console.log(res);
+          push('/potluck')
         })
         .catch(err=>{console.log(err)})
         // const newPotluck = {

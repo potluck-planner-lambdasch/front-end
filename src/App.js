@@ -59,6 +59,7 @@ function App() {
       <CreatePotluck baseURL={baseURL}/>
       {/* <Potlucks baseURL={baseURL}/> */}
       <PrivateRoute path='/potluck' component={PotluckPage} />
+      
     </div>
     
     </>
