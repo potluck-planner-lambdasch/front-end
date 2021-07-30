@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import InviteFriend from './InviteFriend'
 import PrivateRoute from './PrivateRoute';
 import DeletePotluck from './DeletePotluck'
-import EditPotluck from './EditPotluck'
+// import EditPotluck from './EditPotluck'
 
 export default function HostedPotluck(props) {
     const { potlucks, potluck, setPotlucks } = props
