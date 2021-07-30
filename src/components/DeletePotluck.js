@@ -11,7 +11,7 @@ export default function DeletePotluck(props) {
         axiosWithAuth()
         .delete(`/potluck/${potluck.potluck_id}`)
         .then(res => {
-            const newArray = potlucks.filter(pluck => pluck.potluck_id != potluck.potluck_id
+            const newArray = potlucks.filter(pluck => pluck.potluck_id !== potluck.potluck_id
             )
             console.log(res.data)
             setPotlucks(newArray)
