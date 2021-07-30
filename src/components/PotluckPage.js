@@ -23,7 +23,7 @@ const PotluckPage = () => {
         <div>
             <h3>Upcoming Potlucks</h3>
             {potlucks.map(potluck => (
-                <HostedPotluck potluck={potluck} />
+                <HostedPotluck potlucks={potlucks} setPotlucks={setPotlucks} potluck={potluck} />
             ))}
             
         </div>

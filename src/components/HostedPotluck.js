@@ -3,9 +3,11 @@
 import { Link } from 'react-router-dom'
 import InviteFriend from './InviteFriend'
 import PrivateRoute from './PrivateRoute';
+import DeletePotluck from './DeletePotluck'
+// import EditPotluck from './EditPotluck'
 
 export default function HostedPotluck(props) {
-    const { potluck } = props
+    const { potlucks, potluck, setPotlucks } = props
 
     // const [inviteFriend, setInviteFriend] = useState({})
 
@@ -30,20 +32,8 @@ export default function HostedPotluck(props) {
                     <PrivateRoute path='/potluck/invite/'>
                         <InviteFriend potluck={potluck}/>
                     </PrivateRoute>
-                    {/* <form onSubmit={onSubmit}>
-                        <button>Invite</button>
-                        <label>
-                            <input
-                            key={potluck.potluck_id}
-                            id={potluck.potluck_id}
-                            name='friend'
-                            type='text'
-                            value={inviteFriend.friend}
-                            onChange={onChange}
-                            />
-                        </label>
-
-                    </form>  */}
+                    {/* <EditPotluck/> */}
+                    <DeletePotluck potlucks={potlucks} setPotlucks={setPotlucks} potluck={potluck}/>
                 </div>
                 
     )
