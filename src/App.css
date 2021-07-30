@@ -16,5 +16,5 @@
   max-width:100%; /*makes it so that elements can never be bigger than their parents, stops the horizontal scroll bar*/
   padding:0;
   margin:0;
-  /* border:solid 1px grey; */
+  border:solid 1px grey;
 }
