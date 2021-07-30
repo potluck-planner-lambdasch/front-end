@@ -7,8 +7,6 @@ import PrivateRoute from './PrivateRoute';
 export default function HostedPotluck(props) {
     const { potluck } = props
 
-    potluck.potluck_id
-
     // const [inviteFriend, setInviteFriend] = useState({})
 
     // const onChange = (e) => {
@@ -29,7 +27,7 @@ export default function HostedPotluck(props) {
         <div key={potluck.potluck_id}>
                     <p>Location: {potluck.location} Date/Time: {potluck.dateTime} </p>
                     <Link to='/potluck/invite'>Invite Friends</Link>
-                    <PrivateRoute path='/potluck/invite/:id'>
+                    <PrivateRoute path='/potluck/invite/'>
                         <SearchFriend potluck={potluck}/>
                     </PrivateRoute>
                     {/* <form onSubmit={onSubmit}>
