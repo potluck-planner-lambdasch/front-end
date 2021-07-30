@@ -16,11 +16,10 @@ export default function SearchFriend(props) {
             setFriends(res.data)
             // console.log(filteredFriends)
             // setFriends([filteredFriends])
-            console.log(friends)
             console.log('test')
         })
         .catch(err => console.log (err))
-    }, [])  
+    },[])  
 
     const filteredFriends = () => {
         return friends.filter(friend => friend.username.includes(searchTerm));
