@@ -1,7 +1,7 @@
 // import React, { useState } from 'react'
 // import { axiosWithAuth } from './../utils/axiosWithAuth';
 import { Link } from 'react-router-dom'
-import SearchFriend from './SearchFriend'
+import InviteFriend from './InviteFriend'
 import PrivateRoute from './PrivateRoute';
 
 export default function HostedPotluck(props) {
@@ -28,7 +28,7 @@ export default function HostedPotluck(props) {
                     <p>Location: {potluck.location} Date/Time: {potluck.dateTime} </p>
                     <Link to='/potluck/invite'>Invite Friends</Link>
                     <PrivateRoute path='/potluck/invite/'>
-                        <SearchFriend potluck={potluck}/>
+                        <InviteFriend potluck={potluck}/>
                     </PrivateRoute>
                     {/* <form onSubmit={onSubmit}>
                         <button>Invite</button>
