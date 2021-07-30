@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 import { axiosWithAuth } from './../utils/axiosWithAuth';
+import HostedPotluck from './HostedPotluck';
 
-const PotluckPage = (props) => {
+const PotluckPage = () => {
     const [potlucks, setPotlucks] = useState([]);
+    
 
     useEffect(() => {
         axiosWithAuth()
@@ -15,22 +17,13 @@ const PotluckPage = (props) => {
         .catch(err => {console.log(err)})
     },[])
 
+    
+
     return(
         <div>
             <h3>Upcoming Potlucks</h3>
             {potlucks.map(potluck => (
-                <div key={potluck.potluck_id} >
-                    <p key={potluck.potluck_id}>Location: {potluck.location} Date/Time: {potluck.dateTime} </p>
-                    <form>
-                        <label>Invite:
-                            <input
-                            name='friend'
-                            type='text'
-                            
-                            />
-                        </label>
-                    </form> 
-                </div>
+                <HostedPotluck potluck={potluck} />
             ))}
             
         </div>
