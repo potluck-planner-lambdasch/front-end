@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { axiosWithAuth } from './../utils/axiosWithAuth';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import InviteButton from './InviteButton'
 
 const initialFormValue = ''
-export default function SearchFriend(props) {
+export default function InviteFriend(props) {
     const { potluck } = props
     const [friends, setFriends] = useState([])
     const [searchTerm, setSearchTerm] = useState(initialFormValue)
+    const [invite, setInvite] = useState([])
 
 
     useEffect(() => {
@@ -37,8 +39,9 @@ export default function SearchFriend(props) {
         e.preventDefault();
         let result = filteredFriends()
         console.log(result)
+        setInvite(result)
+        console.log(invite)
         setSearchTerm(initialFormValue)
-
 
     }
 
@@ -56,12 +59,11 @@ export default function SearchFriend(props) {
                 onChange={onChange}
             />
             </label>
-            <button>Select</button>
         </form>
         </div>
-        <div>
-
-        </div>
+            {invite.map(user => {
+                return <InviteButton potluck_id={potluck.potluck_id} user_id={user.user_id} username={user.username} setInvite={setInvite}/>
+            })}
         </>
     )
 }
