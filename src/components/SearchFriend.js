@@ -27,7 +27,7 @@ export default function SearchFriend(props) {
     }
     
     const onChange = (e) => {
-        const { name, value, id } = e.target
+        const { value } = e.target
         setSearchTerm(value)
         console.log(searchTerm)
         // setFriends(filteredFriends())
