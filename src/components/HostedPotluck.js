@@ -27,7 +27,7 @@ export default function HostedPotluck(props) {
         <div key={potluck.potluck_id}>
                     <p>Location: {potluck.location} Date/Time: {potluck.dateTime} </p>
                     <Link to='/potluck/invite'>Invite Friends</Link>
-                    <PrivateRoute path='/potluck/invite'>
+                    <PrivateRoute path='/potluck/invite/'>
                         <SearchFriend potluck={potluck}/>
                     </PrivateRoute>
                     {/* <form onSubmit={onSubmit}>
