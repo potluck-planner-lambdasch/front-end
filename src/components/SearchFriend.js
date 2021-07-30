@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react"
 import { axiosWithAuth } from './../utils/axiosWithAuth';
 
@@ -20,14 +19,14 @@ export default function SearchFriend(props) {
             console.log('test')
         })
         .catch(err => console.log (err))
-    }, [])  
+    },[])  
 
     const filteredFriends = () => {
         return friends.filter(friend => friend.username.includes(searchTerm));
     }
     
     const onChange = (e) => {
-        const { name, value, id } = e.target
+        const { value } = e.target
         setSearchTerm(value)
         console.log(searchTerm)
         // setFriends(filteredFriends())

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { axiosWithAuth } from './../utils/axiosWithAuth';
+// import React, { useState } from 'react'
+// import { axiosWithAuth } from './../utils/axiosWithAuth';
 import { Link } from 'react-router-dom'
 import SearchFriend from './SearchFriend'
 import PrivateRoute from './PrivateRoute';

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
 import schema from "./validation/createSchema";
 import { reach } from "yup";
-import axios from 'axios'
+// import axios from 'axios'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
 const CreatePotluckBox = styled.div`
@@ -40,8 +40,7 @@ const initialFormErrors = {
     location:''
 }
 
-export default function CreatePotluck(props) {
-    const { baseURL } = props
+export default function CreatePotluck() {
     const [values, setValues] = useState(initialFormValues)
     const [disable, setDisable] = useState(true);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
