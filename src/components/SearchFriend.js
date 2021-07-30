@@ -16,8 +16,7 @@ export default function SearchFriend(props) {
             // console.log(res.data)
             setFriends(res.data)
             // console.log(filteredFriends)
-            // setFriends([filteredFriends])
-            console.log(friends)
+            // setFriends([filteredFriends]
             console.log('test')
         })
         .catch(err => console.log (err))
